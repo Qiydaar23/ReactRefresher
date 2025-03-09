@@ -1,0 +1,41 @@
+/* Header Styling */
+header {
+    background-color: #333;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navigation Bar */
+.nav-bar {
+    list-style-type: none;
+    display: flex;
+    gap: 15px;
+}
+
+/* Navigation Links */
+.nav-item a, header a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 8px 12px;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-item a:hover, header a:hover {
+    color: #ffcc00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+}

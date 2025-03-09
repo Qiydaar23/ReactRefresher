@@ -2,12 +2,16 @@ import { useState } from "react"
 
 function ListToDos(){
 
+    const today = new Date()
+
+    const targetDate = new Date(today.getFullYear()+12, today.getMonth(), today.getDay())
+
     const todos = [
-        {id:1, description: 'Learn AWS'},
-        {id:2, description: 'Learn C++'},
-        {id:3, description: 'Learn C'},
-        {id:4, description: 'Learn More'},
-        {id:5, description: 'Learn To Learn'}
+        {id:1, description: 'Learn AWS', done: false, targetDate: targetDate}, ,
+        {id:2, description: 'Learn C++',done: false, targetDate: targetDate},
+        {id:3, description: 'Learn C',done: false, targetDate: targetDate},
+        {id:4, description: 'Learn More',done: false, targetDate: targetDate},
+        {id:5, description: 'Learn To Learn',done: false, targetDate: targetDate}
     ]
 
 
@@ -19,8 +23,10 @@ function ListToDos(){
                 <table>
                     <thead>
                         <tr>
-                            <td>id</td>
-                            <td>description</td>
+                            <td>ID</td>
+                            <td>Description</td>
+                            <td>Is Done?</td>
+                            <td>Due Date</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,6 +35,8 @@ function ListToDos(){
                                 <tr key={todo.id}>
                                     <td>{todo.id}</td>
                                     <td>{todo.description}</td>
+                                    <td>{todo.done.toString()}</td>
+                                    <td>{todo.targetDate.toDateString()}</td>
                                 </tr>
                             ))
                         }
