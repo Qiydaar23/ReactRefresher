@@ -16,7 +16,7 @@ function Base(){
                 <Routes>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/" element={<Login/>}/>
-                    <Route path="/welcome" element={<Welcome />}/>
+                    <Route path="/welcome/:username" element={<Welcome />}/>
                     <Route path="*" element={<ErrorPage />} />
                     <Route path="/todoList" element={<ListToDos/>}/>
                     <Route path="/logout" element={<Logout/>}/>

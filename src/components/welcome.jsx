@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom";
 
-function Welcome(){
+function Welcome() {
+    const { username } = useParams(); // Correct usage of useParams()
 
-    return(
+    return (
         <>
-        <h1>Welcome name of user</h1>
-        <Link to="/todoList">Your To Do List</Link>
+            <h1>Welcome {username}!</h1>
+            <Link to="/todoList">Your To-Do List</Link>
         </>
-    )
+    );
 }
-export default Welcome
+
+export default Welcome;
