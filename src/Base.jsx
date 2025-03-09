@@ -6,11 +6,13 @@ import ListToDos from "./components/ListToDos"
 import Logout from "./components/Logout"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
+import AuthProvider from "./components/AuthContext"
 
 
 function Base(){
     return(
         <>
+        <AuthProvider>
             <BrowserRouter>
                 <Header/>
                 <Routes>
@@ -23,6 +25,7 @@ function Base(){
                 </Routes>
                 <Footer />
             </BrowserRouter>
+        </AuthProvider>
         </>
 
     )

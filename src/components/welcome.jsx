@@ -1,8 +1,8 @@
 import { Link, useParams } from "react-router-dom";
-import "./Welcome.css";
+import "./welcome.css";
 
 function Welcome() {
-    const { username } = useParams(); 
+    const { username } = useParams();
 
     return (
         <>
