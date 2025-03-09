@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "./login.css";  
 
 function Login() {
-    const [userName, setUserName] = useState("Ronny"); // Fixed typo
+    const [userName, setUserName] = useState("Ronny");
     const [password, setPassword] = useState("");
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false); // Fixed typo
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const navigate = useNavigate();
 
     function handleUserName(e) {
-        setUserName(e.target.value); // Fixed typo
+        setUserName(e.target.value);
     }
 
     function handlePassword(e) {
@@ -17,7 +18,7 @@ function Login() {
     }
 
     function handleSubmit(e) {
-        e.preventDefault(); // Prevents form from refreshing the page
+        e.preventDefault();
         if (userName === "Ronny" && password === "password") {
             setShowSuccessMessage(true);
             setShowErrorMessage(false);
@@ -55,7 +56,7 @@ function Login() {
                     />
                 </div>
                 <div>
-                    <button type="submit">Login</button> {/* Added type="submit" */}
+                    <button type="submit">Login</button>
                 </div>
             </form>
         </div>

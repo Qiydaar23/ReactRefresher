@@ -1,0 +1,72 @@
+
+.welcome-container {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    border-radius: 15px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+
+h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.welcome-link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(90deg, #007bff, #00d4ff);
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+.welcome-link:hover {
+    background: linear-gradient(90deg, #ffcc00, #ff9900);
+    color: #fff;
+    box-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900, 0 0 30px #ffcc00;
+    transform: scale(1.05);
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .welcome-container {
+        width: 80%;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .welcome-link {
+        font-size: 16px;
+        padding: 10px 16px;
+    }
+}
