@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import "./listTodos.css";
-import { retrieveAllTodosForUsername } from "./api/TodoApiService";
+import { retrieveAllTodosForUsername, deleteTodoForUser } from "./api/TodoApiService";
 
 function ListToDos() {
     const [todos, setTodos] = useState([]);
     const [error, setError] = useState(null);
+    const [message, setMessage] = useState(null);
 
     useEffect(() => {
         refreshTodos();
@@ -22,10 +23,20 @@ function ListToDos() {
             });
     }
 
+    function deleteTodo(id){
+        deleteTodoForUser('Ronny', id)
+        .then( ()=> {
+            setMessage(`Deleted todo with id #${id} successful`)
+            refreshTodos()
+        } )
+        .catch()
+    }
+
     return (
         <div>
             <h1>Things You Want To Do</h1>
             <h6>Todo Details</h6>
+            {message && <div>{message}</div>}
             {error && <div className="error-message">{error}</div>}
             <div>
                 <table>
@@ -35,6 +46,7 @@ function ListToDos() {
                             <td>Description</td>
                             <td>Is Done?</td>
                             <td>Due Date</td>
+                            <td>Delete</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,6 +57,7 @@ function ListToDos() {
                                     <td>{todo.description}</td>
                                     <td>{todo.done ? "✔️" : "❌"}</td>
                                     <td>{new Date(todo.targetDate).toDateString()}</td>
+                                    <td><button onClick={()=> deleteTodo(todo.id)}>Delete</button></td>
                                 </tr>
                             ))
                         ) : (
