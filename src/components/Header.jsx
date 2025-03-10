@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import "./header.css";
-import { AuthContext, useAuth } from "./AuthContext";
-import { useContext } from "react";
+import { useAuth } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
+
 
 
 function Header() {
@@ -9,13 +10,20 @@ function Header() {
     const authContext = useAuth()
     const isAuthenticated = authContext.isAuthenticated
 
+    const navigate = useNavigate()
+
+    function handleLogout(){
+        authContext.setIsAuthenticated(false)
+        navigate("/login")
+    }
+
     return (
         <header>
             <div className="nav-links">
             {isAuthenticated && <Link to="/welcome">Home</Link>}
-            {isAuthenticated && <Link to="/logout">Logout</Link>}
+            {isAuthenticated && <Link to="/logout" onClick={handleLogout}>Logout</Link>}
             {!isAuthenticated && <Link to="/login">Login</Link>}
-                <div>{authContext.number}</div>
+    
             </div>
 
             <ul className="nav-bar">
