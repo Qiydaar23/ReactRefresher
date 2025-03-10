@@ -1,7 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import "./welcome.css";
-import axios from "axios";
 import { useState } from "react";
+import axios from "axios";
+import { retrieveHelloWorldBeab, retrieveHelloWorldPathVariable } from "./api/HelloWorldApiService";
 
 function Welcome() {
 
@@ -11,20 +12,27 @@ function Welcome() {
     const [message, setMessage] = useState(null)
 
     function callBackEnd(){
-        axios.get('http://localhost:8080/hello-world')
-        .then((response)=> successfulResponse(response))
-        .catch((error)=> errorReponse(error))
-        .finally(()=>(console.log('cleanup')))
+        // retrieveHelloWorldBeab()
+        // .then((response) => successfulResponse(response))
+        // .catch((error) =>errorReponse(error))
+        // .finally(()=>console.log("clean up"))
+
+        retrieveHelloWorldPathVariable("Ronny")
+        .then((response) => successfulResponse(response))
+        .catch((error) =>errorReponse(error))
+        .finally(()=>console.log("clean up"))
+
     }
 
     function successfulResponse(response){
         console.log(response)
-        setMessage(response.data)
+        setMessage(response.data.message)
     }
 
     function errorReponse(error){
         console.log(error)
     }
+
 
     return (
         <>
@@ -36,6 +44,7 @@ function Welcome() {
                 <button onClick={callBackEnd}>Call hello-world REST API</button>
             </div>
             <div>{message}</div>
+
         </>
     );
 }
