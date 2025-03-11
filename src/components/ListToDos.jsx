@@ -1,11 +1,20 @@
 import { useState, useEffect } from "react";
 import "./listTodos.css";
 import { retrieveAllTodosForUsername, deleteTodoForUser } from "./api/TodoApiService";
+import { useAuth } from "./AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function ListToDos() {
     const [todos, setTodos] = useState([]);
     const [error, setError] = useState(null);
     const [message, setMessage] = useState(null);
+
+
+    const authContext = useAuth()
+
+    const username = authContext.username
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         refreshTodos();
@@ -31,6 +40,12 @@ function ListToDos() {
         } )
         .catch()
     }
+    function updateTodo(id){
+      console.log('clicked' + id)
+      navigate(`/todo/${id}`)
+
+
+    }
 
     return (
         <div>
@@ -47,6 +62,7 @@ function ListToDos() {
                             <td>Is Done?</td>
                             <td>Due Date</td>
                             <td>Delete</td>
+                            <td>Update</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +74,7 @@ function ListToDos() {
                                     <td>{todo.done ? "✔️" : "❌"}</td>
                                     <td>{new Date(todo.targetDate).toDateString()}</td>
                                     <td><button onClick={()=> deleteTodo(todo.id)}>Delete</button></td>
+                                    <td><button onClick={()=> updateTodo(todo.id)}>Update</button></td>
                                 </tr>
                             ))
                         ) : (

@@ -23,12 +23,14 @@ function Login() {
         e.preventDefault();
         if (userName === "Ronny" && password === "password") {
             authContext.setIsAuthenticated(true)
+            setUserName(userName)
             setShowSuccessMessage(true);
             setShowErrorMessage(false);
             navigate(`/welcome/${userName}`);
 
         } else {
             authContext.setIsAuthenticated(false)
+            setUserName(false)
             setShowSuccessMessage(false);
             setShowErrorMessage(true);
         }

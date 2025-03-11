@@ -12,10 +12,12 @@ function AuthProvider({ children }){
 
     const [isAuthenticated, setIsAuthenticated] = useState(false)
 
+    const [username, setUsername] = useState(null)
+
 
 
     return(
-        <AuthContext.Provider value={ { isAuthenticated, setIsAuthenticated }}>
+        <AuthContext.Provider value={ { isAuthenticated, setIsAuthenticated, username }}>
             {children}
         </AuthContext.Provider>
     )
